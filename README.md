@@ -32,15 +32,23 @@ This project captures GitHub repository events (Push, Pull Request, Merge) using
 
 webhook-repo/
 │
+|
 ├── backend/
+|
 │ ├── app.py
+|
 │ ├── config.py
+|
 │ ├── models.py
 │
 ├── frontend/
+|
 │ ├── src/
+|
 │ │ ├── App.jsx
+| | |
 │ │ ├── main.jsx
+| | |
 │ │ └── index.css
 │
 └── README.md
@@ -97,7 +105,9 @@ webhook-repo/
 ### Backend
 
 cd backend
+
 pip install -r requirements.txt
+
 python app.py
 
 
