@@ -1,29 +1,104 @@
-# GitHub Webhook Activity Dashboard
+# 🎨 Frontend – GitHub Activity Dashboard
 
-## 📌 Overview
-This project captures GitHub events (Push, Pull Request, Merge) via webhooks, stores them in MongoDB, and displays them in a real-time UI.
+This is the **React-based UI** for the GitHub Webhook Activity Dashboard.  
+It displays real-time GitHub events (Push, Pull Request, Merge) fetched from the backend API.
+
+---
 
 ## 🚀 Features
-- GitHub Webhook Integration
-- MongoDB Storage
-- Real-time UI (refresh every 15 seconds)
-- Clean minimal design
+
+- 📡 Fetches data from backend API
+- 🔄 Auto-refresh every **15 seconds**
+- 📊 Displays:
+  - Push events
+  - Pull Requests
+  - Merge events
+- 🧹 Clean and minimal UI
+- ⚡ Fast performance using Vite
+
+---
 
 ## 🛠 Tech Stack
-- Backend: Flask
-- Frontend: React
-- Database: MongoDB
 
-## 🔗 Repositories
-- action-repo: triggers events
-- webhook-repo: main implementation
+- **React (Vite)**
+- **JavaScript (ES6+)**
+- **CSS**
 
-## ⚙️ How it works
-1. GitHub sends webhook events
-2. Flask API processes and stores data
-3. React UI fetches data every 15 seconds
+---
 
-## 📊 Event Formats
-- PUSH → {author} pushed to {branch}
-- PR → {author} submitted PR from {from} to {to}
-- MERGE → {author} merged {from} to {to}
+## 📂 Folder Structure
+
+
+frontend/
+
+├── public/
+
+├── src/
+
+│ ├── App.jsx
+
+│ ├── main.jsx
+
+│ └── index.css
+│
+
+├── index.html
+
+├── package.json
+
+├── vite.config.js
+
+└── README.md
+
+
+---
+
+## ⚙️ How It Works
+
+1. Frontend calls backend API:
+
+http://localhost:5000/events
+
+
+2. Data is fetched every **15 seconds**
+
+3. UI formats and displays events like:
+
+- `yash12000 pushed to main on 01 Mar 2026`
+- `yash12000 submitted a pull request from feature to main`
+- `yash12000 merged branch feature to main`
+
+---
+
+## 🚀 Setup Instructions
+
+### 🔹 Install dependencies
+
+```bash
+npm install
+
+🔹 Run development server
+npm run dev
+
+🔹 Open in browser
+http://localhost:5173
+
+🔌 API Dependency
+
+Make sure backend is running:
+
+http://localhost:5000
+💡 Notes
+
+UI depends on backend API availability
+
+Data auto-refreshes every 15 seconds
+
+Duplicate events are filtered
+
+👨‍💻 Author
+
+Yash Janbandhu
+
+
+---
