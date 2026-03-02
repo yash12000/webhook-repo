@@ -22,11 +22,15 @@ def webhook():
     data = request.json
     event = request.headers.get("X-GitHub-Event")
 
-    print("Event:", event)
+    print("📌 Event:", event)
 
     try:
         if event == "push":
             print("\n--- Processing PUSH ---")
+
+            if not data.get("head_commit"):
+                print("⚠️ No head_commit found → skipping")
+                return {"status": "ignored"}, 200
 
             author = data["pusher"]["name"]
             to_branch = data["ref"].split("/")[-1]
@@ -35,7 +39,7 @@ def webhook():
 
             print("Author:", author)
             print("Branch:", to_branch)
-            print("Message:", commit_message)
+            print("Commit:", commit_message)
 
             if "Merge pull request" in commit_message:
                 print("⚠️ Skipping merge push event")
@@ -64,7 +68,6 @@ def webhook():
             author = pr["user"]["login"]
             from_branch = pr["head"]["ref"]
             to_branch = pr["base"]["ref"]
-
             action_type = data["action"]
 
             print("PR Action:", action_type)
@@ -72,15 +75,17 @@ def webhook():
 
             if action_type == "closed" and pr["merged"]:
                 action = "MERGE"
+                request_id = f"{pr['id']}_MERGE"
                 print("🔥 MERGE detected")
-            else:
-                if action_type != "opened":
-                    print("⚠️ Ignoring PR action:", action_type)
-                    return {"status": "ignored"}, 200
 
+            elif action_type == "opened":
                 action = "PULL_REQUEST"
+                request_id = f"{pr['id']}_PR"
+                print("📌 PR created")
 
-            request_id = f"{pr['id']}_{action}"
+            else:
+                print("⚠️ Ignoring PR action:", action_type)
+                return {"status": "ignored"}, 200
 
             if collection.find_one({"request_id": request_id}):
                 print("⚠️ Duplicate PR/MERGE ignored")
@@ -117,7 +122,7 @@ def get_events():
         for e in events:
             e["_id"] = str(e["_id"])
 
-        print("✅ Returning events:", len(events))
+        print(f"✅ Returning {len(events)} events")
         return jsonify(events)
 
     except Exception as e:
