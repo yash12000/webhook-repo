@@ -32,28 +32,28 @@ This project captures GitHub repository events (Push, Pull Request, Merge) using
 
 webhook-repo/
 │
-|
+
 ├── backend/
 |
 │ ├── app.py
-| |
+| 
 │ ├── config.py
-| |
+| 
 │ ├── models.py
-| |
+| 
 │ ├── requirements.txt
 │
 |
 ├── frontend/
 |
 │ ├── public/
-| |
+| 
 │ ├── src/
-| |
+| 
 │ │ ├── App.jsx
-| | |
+| | 
 │ │ ├── main.jsx
-| | |
+| | 
 │ │ └── index.css
 | | 
 │ ├── index.html
@@ -61,7 +61,7 @@ webhook-repo/
 │ ├── package.json
 | | 
 │ ├── vite.config.js
-│ |
+│ 
 ├── .gitignore
 |
 └── README.md
