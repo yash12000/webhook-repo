@@ -1,0 +1,22 @@
+[
+  {
+    "author": "yash12000",
+    "action": "PUSH",
+    "to_branch": "main",
+    "timestamp": "01 Mar 2026 - 10:00 AM UTC"
+  },
+  {
+    "author": "yash12000",
+    "action": "PULL_REQUEST",
+    "from_branch": "feature",
+    "to_branch": "main",
+    "timestamp": "01 Mar 2026 - 10:10 AM UTC"
+  },
+  {
+    "author": "yash12000",
+    "action": "MERGE",
+    "from_branch": "feature",
+    "to_branch": "main",
+    "timestamp": "01 Mar 2026 - 10:15 AM UTC"
+  }
+]
